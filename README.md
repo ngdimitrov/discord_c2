@@ -33,18 +33,12 @@ Visit the Discord Developer Portal
 Select your app → Bot tab → Reset Token → Copy and paste it into your code
 
 
-discord-bot/
-│
-├── bot.py               # Main bot script
-├── requirements.txt     # Dependencies
-└── README.md            # Documentation
-
 
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/yourusername/discord-bot.git
-cd discord-bot
+git clone https://github.com/ngdimitrov/discord_c2_bot.git
+cd discord_c2_bot
 python -m venv venv
 source venv/bin/activate   # Linux / macOS
 venv\Scripts\activate      # Windows
