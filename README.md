@@ -14,6 +14,7 @@ A simple Discord bot written in **Python** using the `discord.py` library.
 ## Configuration
 
 TOKEN = "YOUR_DISCORD_BOT_TOKEN"
+
 AUTHORIZED_USER_ID = 123456789012345678  # Your Discord user ID
 
 ---
