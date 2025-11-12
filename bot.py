@@ -1,7 +1,7 @@
 import discord
 from subprocess import PIPE, Popen
 
-token = ''
+token = 'ADD_TOKEN'
 
 
 intents = discord.Intents.default()
@@ -16,7 +16,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     try:  
-        if message.author.id == 1438092622186151967:
+        if message.author.id == ADD_USER_ID:
             return
     
         print(str(message.content))
