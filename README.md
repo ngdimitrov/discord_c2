@@ -19,7 +19,7 @@ AUTHORIZED_USER_ID = 123456789012345678  # Your Discord user ID
 
 ---
 
-## Discord Setup
+## 💬 Discord Setup
 Get Your User ID in Discord
 
 Go to User Settings → Advanced → Enable Developer Mode
