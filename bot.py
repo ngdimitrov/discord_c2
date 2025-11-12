@@ -1,7 +1,11 @@
 import discord
 from subprocess import PIPE, Popen
 
-token = 'ADD_TOKEN'
+
+# --- Configuration ---
+token = 'ADD_YOUR_DISCORD_BOT_TOKEN_HERE'
+authorized_user_id = 123456789012345678  # Replace with your Discord user ID
+# ----------------------
 
 
 intents = discord.Intents.default()
@@ -16,7 +20,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     try:  
-        if message.author.id == ADD_USER_ID:
+        if message.author.id == authorized_user_id:
             return
     
         print(str(message.content))
