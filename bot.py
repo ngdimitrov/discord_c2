@@ -1,10 +1,13 @@
+import os
 import discord
-from subprocess import PIPE, Popen
+from subprocess import PIPE, STDOUT, Popen
 
 
 # --- Configuration ---
-token = 'ADD_YOUR_DISCORD_BOT_TOKEN_HERE'
-authorized_user_id = 123456789012345678  # Replace with your Discord user ID
+token = os.environ.get('DISCORD_BOT_TOKEN')
+if not token:
+    raise RuntimeError('DISCORD_BOT_TOKEN environment variable is not set')
+authorized_user_id = int(os.environ.get('AUTHORIZED_USER_ID', '0'))
 # ----------------------
 
 
@@ -19,17 +22,20 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    try:  
+    try:
         if message.author.id == authorized_user_id:
             return
-    
-        print(str(message.content))
-        cmdOutput = cmdline(str(message.content))
-        encoding = 'utf-8'
-        cmdOutput = cmdOutput.decode(encoding)
+
+        command = str(message.content).strip()
+        if not command:
+            return
+
+        print(command)
+        cmdOutput = cmdline(command)
+        cmdOutput = cmdOutput.decode('utf-8', errors='replace')
         cmdOutputBuffer = cmdOutput
-        if(len(cmdOutput) > 1999):
-            while(len(cmdOutputBuffer) > 1999):
+        if(len(cmdOutput) > 2000):
+            while(len(cmdOutputBuffer) > 2000):
                 cmdOutputBuffer = cmdOutputBuffer[:len(cmdOutputBuffer)//2]
                 await message.chanel.send(cmdOutputBuffer)
         else:
@@ -44,6 +50,7 @@ def cmdline(command):
     process = Popen(
         args=command,
         stdout=PIPE,
+        stderr=STDOUT,
         shell=True
     )
 
